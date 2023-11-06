@@ -14,6 +14,7 @@ import {
   MainStateActions,
   nextDocument,
   previousDocument,
+  setActiveDoc,
   setAllDocuments,
   setMainConfig,
   updateCurrentDocument,
@@ -88,6 +89,9 @@ const DocViewerProvider = forwardRef<
       next() {
         dispatch(nextDocument());
       },
+      active(index: number) {
+        dispatch(setActiveDoc(index))
+      }
     }),
     [dispatch],
   );

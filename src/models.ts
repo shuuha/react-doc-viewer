@@ -78,4 +78,5 @@ export interface DocRenderer extends FC<PropsWithChildren<DocRendererProps>> {
 export interface DocViewerRef {
   prev: () => void;
   next: () => void;
+  active: (index: number) => void;
 }

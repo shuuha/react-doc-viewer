@@ -13,6 +13,8 @@ import {
   SET_RENDERER_RECT,
   UpdateCurrentDocument,
   UPDATE_CURRENT_DOCUMENT,
+  SET_ACTIVE_DOCUMENT,
+  SetActiveDocAction,
 } from "./actions";
 import { AvailableLanguages, defaultLanguage } from "../i18n";
 
@@ -106,12 +108,31 @@ export const mainStateReducer: MainStateReducer = (
       };
     }
 
+    case SET_ACTIVE_DOCUMENT: {
+      const { index } = action as SetActiveDocAction
+      const existingDoc = state.documents[index]
+      if (!existingDoc) return state;
+      if (existingDoc === state.currentDocument) return state;
+
+      if (state.onDocumentChange) {
+        state.onDocumentChange(existingDoc);
+      }
+
+      return {
+        ...state,
+        currentFileNo: index,
+        currentDocument: state.documents[index],
+        documentLoading: true,
+      };
+    }
+
     case UPDATE_CURRENT_DOCUMENT: {
       const { document } = action as UpdateCurrentDocument;
 
       return {
         ...state,
         currentDocument: document,
+        documentLoading: true,
         currentFileNo: state.documents.findIndex(
           (doc) => doc.uri === document.uri,
         ),
