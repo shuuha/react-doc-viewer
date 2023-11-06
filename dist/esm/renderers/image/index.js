@@ -13,13 +13,24 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 import React from "react";
 import styled from "styled-components";
 var ImageProxyRenderer = function (props) {
-    var currentDocument = props.mainState.currentDocument, children = props.children;
+    var currentDocument = props.mainState.currentDocument, children = props.children, restProps = __rest(props, ["mainState", "children"]);
     if (!currentDocument)
         return null;
-    return (React.createElement(Container, __assign({ id: "image-renderer" }, props), children || (React.createElement(Img, { id: "image-img", src: currentDocument.fileData }))));
+    return (React.createElement(Container, __assign({ id: "image-renderer" }, restProps), children || (React.createElement(Img, { id: "image-img", src: currentDocument.fileData }))));
 };
 export default ImageProxyRenderer;
 ImageProxyRenderer.fileTypes = [];
