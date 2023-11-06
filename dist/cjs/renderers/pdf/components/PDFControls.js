@@ -41,12 +41,13 @@ var PDFControls = function () {
     var t = (0, useTranslation_1.useTranslation)().t;
     var _a = (0, react_1.useContext)(state_1.PDFContext), _b = _a.state, mainState = _b.mainState, paginated = _b.paginated, zoomLevel = _b.zoomLevel, numPages = _b.numPages, zoomJump = _b.zoomJump, defaultZoomLevel = _b.defaultZoomLevel, dispatch = _a.dispatch;
     var currentDocument = (mainState === null || mainState === void 0 ? void 0 : mainState.currentDocument) || null;
-    (0, react_1.useEffect)(function () {
-        if (numPages > 1) {
-            dispatch((0, actions_1.setPDFPaginated)(false));
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    // useEffect(() => {
+    //   console.log('use effect in pdf controls', numPages);
+    //   if (numPages > 1) {
+    //     dispatch(setPDFPaginated(false))
+    //   }
+    // // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [])
     return (react_1.default.createElement(Container, { id: "pdf-controls" },
         (currentDocument === null || currentDocument === void 0 ? void 0 : currentDocument.fileData) && (react_1.default.createElement(DownloadButton, { id: "pdf-download", href: currentDocument === null || currentDocument === void 0 ? void 0 : currentDocument.fileData, download: (currentDocument === null || currentDocument === void 0 ? void 0 : currentDocument.fileName) || (currentDocument === null || currentDocument === void 0 ? void 0 : currentDocument.uri), title: t("downloadButtonLabel") },
             react_1.default.createElement(icons_1.DownloadPDFIcon, { color: "#000", size: "75%" }))),
