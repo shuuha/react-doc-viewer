@@ -43,7 +43,7 @@ var PDFControls = function () {
     var currentDocument = (mainState === null || mainState === void 0 ? void 0 : mainState.currentDocument) || null;
     (0, react_1.useEffect)(function () {
         if (numPages > 1) {
-            dispatch((0, actions_1.setPDFPaginated)(true));
+            dispatch((0, actions_1.setPDFPaginated)(false));
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);

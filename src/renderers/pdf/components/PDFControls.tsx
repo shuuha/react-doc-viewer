@@ -32,7 +32,7 @@ const PDFControls: FC<{}> = () => {
 
   useEffect(() => {
     if (numPages > 1) {
-      dispatch(setPDFPaginated(true))
+      dispatch(setPDFPaginated(false))
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
