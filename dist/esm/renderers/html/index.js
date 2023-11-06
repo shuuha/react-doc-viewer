@@ -21,7 +21,7 @@ var HTMLRenderer = function (_a) {
         iframeDoc.close();
     }, [currentDocument]);
     return (React.createElement(Container, { id: "html-renderer" },
-        React.createElement(BodyIFrame, { id: "html-body", sandbox: "allow-same-origin" })));
+        React.createElement(BodyIFrame, { id: "html-body", sandbox: "allow-same-origin allow-scripts" })));
 };
 export default HTMLRenderer;
 HTMLRenderer.fileTypes = ["htm", "html", "text/htm", "text/html"];

@@ -57,9 +57,21 @@ var mainStateReducer = function (state, action) {
             }
             return __assign(__assign({}, state), { currentFileNo: state.currentFileNo - 1, currentDocument: state.documents[prevDocumentNo], documentLoading: true });
         }
+        case actions_1.SET_ACTIVE_DOCUMENT: {
+            var index = action.index;
+            var existingDoc = state.documents[index];
+            if (!existingDoc)
+                return state;
+            if (existingDoc === state.currentDocument)
+                return state;
+            if (state.onDocumentChange) {
+                state.onDocumentChange(existingDoc);
+            }
+            return __assign(__assign({}, state), { currentFileNo: index, currentDocument: state.documents[index], documentLoading: true });
+        }
         case actions_1.UPDATE_CURRENT_DOCUMENT: {
             var document_1 = action.document;
-            return __assign(__assign({}, state), { currentDocument: document_1, currentFileNo: state.documents.findIndex(function (doc) { return doc.uri === document_1.uri; }) });
+            return __assign(__assign({}, state), { currentDocument: document_1, documentLoading: true, currentFileNo: state.documents.findIndex(function (doc) { return doc.uri === document_1.uri; }) });
         }
         case actions_1.SET_RENDERER_RECT: {
             var rect = action.rect;

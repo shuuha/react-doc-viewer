@@ -3,6 +3,7 @@ export declare const SET_ALL_DOCUMENTS = "SET_ALL_DOCUMENTS";
 export declare const SET_DOCUMENT_LOADING = "SET_DOCUMENT_LOADING";
 export declare const NEXT_DOCUMENT = "NEXT_DOCUMENT";
 export declare const PREVIOUS_DOCUMENT = "PREVIOUS_DOCUMENT";
+export declare const SET_ACTIVE_DOCUMENT = "SET_ACTIVE_DOCUMENT";
 export declare const UPDATE_CURRENT_DOCUMENT = "UPDATE_CURRENT_DOCUMENT";
 export declare const SET_RENDERER_RECT = "SET_RENDERER_RECT";
 export declare const SET_MAIN_CONFIG = "SET_MAIN_CONFIG";
@@ -33,11 +34,16 @@ export interface UpdateCurrentDocument {
 export interface PreviousDocument {
     type: typeof PREVIOUS_DOCUMENT;
 }
+export interface SetActiveDocAction {
+    type: typeof SET_ACTIVE_DOCUMENT;
+    index: number;
+}
 export declare const setAllDocuments: (documents: IDocument[], initialActiveDocument?: IDocument) => SetAllDocuments;
 export declare const setDocumentLoading: (value: boolean) => SetDocumentLoading;
 export declare const nextDocument: () => NextDocument;
 export declare const previousDocument: () => PreviousDocument;
+export declare const setActiveDoc: (index: number) => SetActiveDocAction;
 export declare const updateCurrentDocument: (document: IDocument) => UpdateCurrentDocument;
 export declare const setRendererRect: (rect: DOMRect) => SetRendererRect;
 export declare const setMainConfig: (config: IConfig) => SetMainConfig;
-export type MainStateActions = SetAllDocuments | SetDocumentLoading | NextDocument | PreviousDocument | UpdateCurrentDocument | SetRendererRect | SetMainConfig;
+export type MainStateActions = SetAllDocuments | SetDocumentLoading | NextDocument | PreviousDocument | UpdateCurrentDocument | SetRendererRect | SetMainConfig | SetActiveDocAction;

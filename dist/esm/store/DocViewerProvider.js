@@ -11,7 +11,7 @@ var __assign = (this && this.__assign) || function () {
 };
 import React, { createContext, useEffect, useReducer, useImperativeHandle, forwardRef, } from "react";
 import { defaultLanguage, locales } from "../i18n";
-import { nextDocument, previousDocument, setAllDocuments, setMainConfig, updateCurrentDocument, } from "./actions";
+import { nextDocument, previousDocument, setActiveDoc, setAllDocuments, setMainConfig, updateCurrentDocument, } from "./actions";
 import { initialState, mainStateReducer, } from "./mainStateReducer";
 var DocViewerContext = createContext({ state: initialState, dispatch: function () { return null; } });
 var DocViewerProvider = forwardRef(function (props, ref) {
@@ -40,6 +40,9 @@ var DocViewerProvider = forwardRef(function (props, ref) {
         next: function () {
             dispatch(nextDocument());
         },
+        active: function (index) {
+            dispatch(setActiveDoc(index));
+        }
     }); }, [dispatch]);
     return (React.createElement(DocViewerContext.Provider, { value: { state: state, dispatch: dispatch } }, children));
 });

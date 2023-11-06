@@ -67,6 +67,9 @@ var DocViewerProvider = (0, react_1.forwardRef)(function (props, ref) {
         next: function () {
             dispatch((0, actions_1.nextDocument)());
         },
+        active: function (index) {
+            dispatch((0, actions_1.setActiveDoc)(index));
+        }
     }); }, [dispatch]);
     return (react_1.default.createElement(DocViewerContext.Provider, { value: { state: state, dispatch: dispatch } }, children));
 });

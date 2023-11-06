@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.setMainConfig = exports.setRendererRect = exports.updateCurrentDocument = exports.previousDocument = exports.nextDocument = exports.setDocumentLoading = exports.setAllDocuments = exports.SET_MAIN_CONFIG = exports.SET_RENDERER_RECT = exports.UPDATE_CURRENT_DOCUMENT = exports.PREVIOUS_DOCUMENT = exports.NEXT_DOCUMENT = exports.SET_DOCUMENT_LOADING = exports.SET_ALL_DOCUMENTS = void 0;
+exports.setMainConfig = exports.setRendererRect = exports.updateCurrentDocument = exports.setActiveDoc = exports.previousDocument = exports.nextDocument = exports.setDocumentLoading = exports.setAllDocuments = exports.SET_MAIN_CONFIG = exports.SET_RENDERER_RECT = exports.UPDATE_CURRENT_DOCUMENT = exports.SET_ACTIVE_DOCUMENT = exports.PREVIOUS_DOCUMENT = exports.NEXT_DOCUMENT = exports.SET_DOCUMENT_LOADING = exports.SET_ALL_DOCUMENTS = void 0;
 exports.SET_ALL_DOCUMENTS = "SET_ALL_DOCUMENTS";
 exports.SET_DOCUMENT_LOADING = "SET_DOCUMENT_LOADING";
 exports.NEXT_DOCUMENT = "NEXT_DOCUMENT";
 exports.PREVIOUS_DOCUMENT = "PREVIOUS_DOCUMENT";
+exports.SET_ACTIVE_DOCUMENT = "SET_ACTIVE_DOCUMENT";
 exports.UPDATE_CURRENT_DOCUMENT = "UPDATE_CURRENT_DOCUMENT";
 exports.SET_RENDERER_RECT = "SET_RENDERER_RECT";
 exports.SET_MAIN_CONFIG = "SET_MAIN_CONFIG";
@@ -25,6 +26,8 @@ var previousDocument = function () { return ({
     type: exports.PREVIOUS_DOCUMENT,
 }); };
 exports.previousDocument = previousDocument;
+var setActiveDoc = function (index) { return ({ type: exports.SET_ACTIVE_DOCUMENT, index: index }); };
+exports.setActiveDoc = setActiveDoc;
 var updateCurrentDocument = function (document) { return ({ type: exports.UPDATE_CURRENT_DOCUMENT, document: document }); };
 exports.updateCurrentDocument = updateCurrentDocument;
 var setRendererRect = function (rect) { return ({

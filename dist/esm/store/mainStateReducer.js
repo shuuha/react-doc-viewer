@@ -9,7 +9,7 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import { NEXT_DOCUMENT, PREVIOUS_DOCUMENT, SET_ALL_DOCUMENTS, SET_DOCUMENT_LOADING, SET_MAIN_CONFIG, SET_RENDERER_RECT, UPDATE_CURRENT_DOCUMENT, } from "./actions";
+import { NEXT_DOCUMENT, PREVIOUS_DOCUMENT, SET_ALL_DOCUMENTS, SET_DOCUMENT_LOADING, SET_MAIN_CONFIG, SET_RENDERER_RECT, UPDATE_CURRENT_DOCUMENT, SET_ACTIVE_DOCUMENT, } from "./actions";
 import { defaultLanguage } from "../i18n";
 export var initialState = {
     currentFileNo: 0,
@@ -54,9 +54,21 @@ export var mainStateReducer = function (state, action) {
             }
             return __assign(__assign({}, state), { currentFileNo: state.currentFileNo - 1, currentDocument: state.documents[prevDocumentNo], documentLoading: true });
         }
+        case SET_ACTIVE_DOCUMENT: {
+            var index = action.index;
+            var existingDoc = state.documents[index];
+            if (!existingDoc)
+                return state;
+            if (existingDoc === state.currentDocument)
+                return state;
+            if (state.onDocumentChange) {
+                state.onDocumentChange(existingDoc);
+            }
+            return __assign(__assign({}, state), { currentFileNo: index, currentDocument: state.documents[index], documentLoading: true });
+        }
         case UPDATE_CURRENT_DOCUMENT: {
             var document_1 = action.document;
-            return __assign(__assign({}, state), { currentDocument: document_1, currentFileNo: state.documents.findIndex(function (doc) { return doc.uri === document_1.uri; }) });
+            return __assign(__assign({}, state), { currentDocument: document_1, documentLoading: true, currentFileNo: state.documents.findIndex(function (doc) { return doc.uri === document_1.uri; }) });
         }
         case SET_RENDERER_RECT: {
             var rect = action.rect;
