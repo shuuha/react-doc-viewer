@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import React, { FC, useContext, useEffect } from "react";
 import styled from "styled-components";
 import { Button, LinkButton } from "../../../components/common";
 import { IStyledProps } from "../../..";
@@ -30,9 +30,16 @@ const PDFControls: FC<{}> = () => {
 
   const currentDocument = mainState?.currentDocument || null;
 
+  useEffect(() => {
+    if (numPages > 1) {
+      dispatch(setPDFPaginated(true))
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <Container id="pdf-controls">
-      {paginated && numPages > 1 && <PDFPagination />}
+      {/* {paginated && numPages > 1 && <PDFPagination />} */}
 
       {currentDocument?.fileData && (
         <DownloadButton
@@ -67,7 +74,7 @@ const PDFControls: FC<{}> = () => {
         <ResetZoomPDFIcon color="#000" size="70%" />
       </ControlButton>
 
-      {numPages > 1 && (
+      {/* {numPages > 1 && (
         <ControlButton
           id="pdf-toggle-pagination"
           onMouseDown={() => dispatch(setPDFPaginated(!paginated))}
@@ -78,7 +85,7 @@ const PDFControls: FC<{}> = () => {
             reverse={paginated}
           />
         </ControlButton>
-      )}
+      )} */}
     </Container>
   );
 };
@@ -90,7 +97,7 @@ const Container = styled.div`
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 5;
   justify-content: flex-end;
   padding: 8px;
   background-color: ${(props: IStyledProps) => props.theme.tertiary};
@@ -113,6 +120,7 @@ const ControlButton = styled(Button)`
 const DownloadButton = styled(LinkButton)`
   width: 30px;
   height: 30px;
+  margin-right: 50px;
   @media (max-width: 768px) {
     width: 25px;
     height: 25px;
