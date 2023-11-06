@@ -23,7 +23,7 @@ const HTMLRenderer: DocRenderer = ({ mainState: { currentDocument } }) => {
 
   return (
     <Container id="html-renderer">
-      <BodyIFrame id="html-body" sandbox="allow-same-origin allow-scripts" />
+      <BodyIFrame id="html-body" sandbox="allow-same-origin" />
     </Container>
   );
 };
