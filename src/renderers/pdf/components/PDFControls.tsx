@@ -30,14 +30,14 @@ const PDFControls: FC<{}> = () => {
 
   const currentDocument = mainState?.currentDocument || null;
 
-  // useEffect(() => {
-  //   console.log('use effect in pdf controls', numPages);
-  //   if (numPages > 1) {
+  useEffect(() => {
+    console.log('use effect in pdf controls', numPages, paginated);
+    if (numPages > 1) {
 
-  //     dispatch(setPDFPaginated(false))
-  //   }
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [])
+      dispatch(setPDFPaginated(false))
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <Container id="pdf-controls">
