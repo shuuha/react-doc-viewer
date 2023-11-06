@@ -35,7 +35,6 @@ const PDFControls: FC<{}> = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log('hello', paginated);
   return (
     <Container id="pdf-controls">
       {/* {paginated && numPages > 1 && <PDFPagination />} */}

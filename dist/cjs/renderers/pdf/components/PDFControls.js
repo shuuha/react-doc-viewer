@@ -45,7 +45,6 @@ var PDFControls = function () {
         dispatch((0, actions_1.setPDFPaginated)(false));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    console.log('hello', paginated);
     return (react_1.default.createElement(Container, { id: "pdf-controls" },
         (currentDocument === null || currentDocument === void 0 ? void 0 : currentDocument.fileData) && (react_1.default.createElement(DownloadButton, { id: "pdf-download", href: currentDocument === null || currentDocument === void 0 ? void 0 : currentDocument.fileData, download: (currentDocument === null || currentDocument === void 0 ? void 0 : currentDocument.fileName) || (currentDocument === null || currentDocument === void 0 ? void 0 : currentDocument.uri), title: t("downloadButtonLabel") },
             react_1.default.createElement(icons_1.DownloadPDFIcon, { color: "#000", size: "75%" }))),
